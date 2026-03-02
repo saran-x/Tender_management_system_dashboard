@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Tender - Tender Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tender-form-card {
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: none;
+        }
+        .form-header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            border-radius: 10px 10px 0 0;
+            padding: 1.5rem;
+        }
+        .form-section {
+            border-left: 4px solid #1e3a8a;
+            border-radius: 8px;
+            background: #f8f9fa;
+            margin-bottom: 1rem;
+        }
+        .required-field::after {
+            content: " *";
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category,message in messages%}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">{{message}}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <form action="" method="post">
+                    <div class="card tender-form-card">
+                        <!-- Header -->
+                        <div class="card-header form-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4 class="mb-1">
+                                        <i class="fas fa-plus-circle me-2"></i>Add New Tender
+                                    </h4>
+                                    <p class="mb-0 opacity-90">Create a new tender with all necessary details</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-4">
+                            <!-- Basic Information Section -->
+                            <div class="form-section p-4 mb-4">
+                                <h5 class="text-primary mb-4">
+                                    <i class="fas fa-info-circle me-2"></i>Basic Information
+                                </h5>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold required-field">Tender ID</label>
+                                        <input type="text" class="form-control" id="tenderId" name="tender_id" required 
+                                               placeholder="e.g., T-2024-001">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Reference Number</label>
+                                        <input type="text" class="form-control" id="referenceNo" name="reference_no" 
+                                               placeholder="e.g., TM/CONST/2024/001">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label fw-bold required-field">Tender Title</label>
+                                        <input type="text" class="form-control" id="title" name="title" required 
+                                               placeholder="Enter tender title">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label fw-bold">Description</label>
+                                        <textarea class="form-control" id="description" name="description" rows="4" 
+                                                  placeholder="Enter detailed tender description..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold required-field">Category</label>
+                                        <input type="text" class="form-control" id="category" name="category" required 
+                                               placeholder="e.g., Construction, IT Services">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold required-field">Status</label>
+                                        <input type="text" class="form-control" id="status" name="status" required 
+                                               placeholder="e.g., Published, Draft">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold required-field">Budget Amount</label>
+                                        <input type="number" class="form-control" id="budget" name="budget" required 
+                                               min="0" step="0.01" placeholder="2500000">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold required-field">Currency</label>
+                                        <input type="text" class="form-control" id="currency" name="currency" required 
+                                               placeholder="e.g., USD, EUR" value="USD">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label fw-bold required-field">Submission Deadline</label>
+                                        <input type="date" class="form-control" id="deadline" name="deadline" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Timeline Information -->
+                            <div class="form-section p-4 mb-4">
+                                <h5 class="text-primary mb-4">
+                                    <i class="fas fa-calendar-alt me-2"></i>Timeline Information
+                                </h5>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Published Date</label>
+                                        <input type="date" class="form-control" id="publishedDate" name="timeline.published_date">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Bid Opening Date</label>
+                                        <input type="date" class="form-control" id="bidOpeningDate" name="timeline.bid_opening_date">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Bid Closing Date</label>
+                                        <input type="date" class="form-control" id="bidClosingDate" name="timeline.bid_closing_date">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Evaluation Period (Days)</label>
+                                        <input type="number" class="form-control" id="evaluationPeriod" name="timeline.evaluation_period_days" 
+                                               min="1" placeholder="21">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Expected Award Date</label>
+                                        <input type="date" class="form-control" id="expectedAwardDate" name="timeline.expected_award_date">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Project Start Date</label>
+                                        <input type="date" class="form-control" id="projectStartDate" name="timeline.project_start_date">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label fw-bold">Project Duration (Days)</label>
+                                        <input type="number" class="form-control" id="projectDuration" name="timeline.project_duration_days" 
+                                               min="1" placeholder="540">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional Information -->
+                            <div class="form-section p-4 mb-4">
+                                <h5 class="text-primary mb-4">
+                                    <i class="fas fa-tasks me-2"></i>Additional Information
+                                </h5>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Tender Type</label>
+                                        <input type="text" class="form-control" id="tenderType" name="additional_info.tender_type" 
+                                               placeholder="e.g., Open Tender, Limited Tender">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Evaluation Method</label>
+                                        <input type="text" class="form-control" id="evaluationMethod" name="additional_info.evaluation_method" 
+                                               placeholder="e.g., Quality & Cost Based, L1 Price Based">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Bid Bond Required</label>
+                                        <input type="text" class="form-control" id="bidBondRequired" name="additional_info.bid_bond_required" 
+                                               placeholder="true or false">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Bid Bond Amount</label>
+                                        <input type="number" class="form-control" id="bidBondAmount" name="additional_info.bid_bond_amount" 
+                                               min="0" step="0.01" placeholder="50000">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Performance Bond Required</label>
+                                        <input type="text" class="form-control" id="performanceBondRequired" name="additional_info.performance_bond_required" 
+                                               placeholder="true or false">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Performance Bond Percentage</label>
+                                        <input type="number" class="form-control" id="performanceBondPercentage" name="additional_info.performance_bond_percentage" 
+                                               min="0" max="100" step="0.1" placeholder="10">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Statistics Information -->
+                            <div class="form-section p-4">
+                                <h5 class="text-primary mb-4">
+                                    <i class="fas fa-chart-bar me-2"></i>Statistics (Optional)
+                                </h5>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Views</label>
+                                        <input type="number" class="form-control" id="views" name="statistics.views" 
+                                               min="0" placeholder="245">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Downloads</label>
+                                        <input type="number" class="form-control" id="downloads" name="statistics.downloads" 
+                                               min="0" placeholder="89">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Clarifications Requested</label>
+                                        <input type="number" class="form-control" id="clarifications" name="statistics.clarifications_requested" 
+                                               min="0" placeholder="12">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Bids Received</label>
+                                        <input type="number" class="form-control" id="bidsReceived" name="statistics.bids_received" 
+                                               min="0" placeholder="0">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label fw-bold">Days Remaining</label>
+                                        <input type="number" class="form-control" id="daysRemaining" name="statistics.days_remaining" 
+                                               placeholder="23">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Form Actions -->
+                            <div class="d-flex justify-content-between mt-4">
+                                <button onclick="goBack()" class="btn btn-outline-primary">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Previous
+                                </button>
+                                <div>
+                                    <button type="reset" class="btn btn-outline-danger me-2" onclick="resetForm()">
+                                        <i class="fas fa-undo me-1"></i>Clear All
+                                    </button>
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-plus me-1"></i>Create Tender
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{url_for('static',filename='files/js/jquery.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        $('.alert').hide(1000)
+    })
+    function goBack() {
+            // You can use either method:
+            
+            // Method 1: Go back in browser history
+            window.history.back();
+            
+            // Method 2: Redirect to a specific page
+            // window.location.href = '/tenders'; // Change to your desired URL
+            
+            // Method 3: Show confirmation
+            // if (confirm('Are you sure you want to go back?')) {
+            //     window.history.back();
+            // }
+        }
+</script>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tender Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .sidebar {
+            min-height: calc(100vh - 80px);
+            background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
+        }
+        .sidebar .nav-link {
+            color: #fff;
+            padding: 12px 20px;
+            margin: 4px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+        .navbar-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .content-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            min-height: 600px;
+        }
+        .stat-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #1e40af;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Main Container -->
+    <div class="container-fluid">
+        <!-- Top Navigation Card -->
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="navbar-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <!-- Brand -->
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-handshake fa-2x text-primary me-3"></i>
+                            <div>
+                                <h4 class="mb-0 text-primary">TenderManage Pro</h4>
+                                <small class="text-muted">Streamline Your Tender Process</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-md-3 col-lg-2">
+                <div class="sidebar rounded-3">
+                    <nav class="nav flex-column p-3">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-tachometer-alt me-3"></i>Dashboard
+                        </a>
+                        <a class="nav-link" href="{{url_for('tendor')}}">
+                            <i class="fas fa-file-contract me-3"></i>Tenders
+                        </a>
+                        <a class="nav-link" href="{{url_for('vendor')}}">
+                            <i class="fas fa-building me-3"></i>Vendors
+                        </a>
+                        <a class="nav-link" href="{{url_for('contract')}}">
+                            <i class="fas fa-handshake me-3"></i>Contracts Details
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-md-9 col-lg-10">
+                <!-- Statistics Cards -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6 mb-3">
+                        <div class="stat-card p-3">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="text-muted">Active Tenders</h6>
+                                    <h3 class="mb-0">{{counts_Publish}}</h3>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-file-contract fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-3">
+                        <div class="stat-card p-3">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="text-muted">Total Vendors</h6>
+                                    <h3 class="mb-0">{{result_v_counts}}</h3>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-building fa-2x text-success"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-3">
+                        <div class="stat-card p-3">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="text-muted">Pending Approval</h6>
+                                    <h3 class="mb-0">{{result_pending}}</h3>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-clock fa-2x text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-3">
+                        <div class="stat-card p-3">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="text-muted">This Month</h6>
+                                    <h3 class="mb-0">₹ 2,00,000</h3>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-chart-line fa-2x text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content Card -->
+                <div class="content-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="text-primary">Recent Tenders</h4>
+                        <a href="{{url_for('new_tender')}}">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-plus me-2"></i>New Tender
+                            </button>
+                        </a>
+                    </div>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category,message in messages%}
+                                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">{{message}}</div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <!-- Tenders Table -->
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Tender ID</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Budget</th>
+                                    <th>Deadline</th>
+                                    <th>Status</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for res in result_recent_tender %}
+                                    <tr>
+                                        <td>{{res.tender_id}}</td>
+                                        <td>{{res.title}}</td>
+                                        <td>{{res.category}}</td>
+                                        <td>{{res.budget}}</td>
+                                        <td>{{res.deadline}}</td>
+                                        <td>
+                                            {% if res.status == 'PUBLILSHED' or res.status == 'Published' %}
+                                                <span class="badge bg-success status-badge fs-6" id="statusBadge">{{res.status}}</span>
+                                            {% elif res.status == 'PENDING' or res.status == 'Pending' %}
+                                                <span class="badge bg-warning status-badge text-dark fs-6" id="statusBadge">{{res.status}}</span>
+                                            {% elif res.status == 'Awarded' or res.status == 'AWARDED' %}
+                                                <span class="badge bg-dark status-badge fs-6" id="statusBadge">{{res.status}}</span>
+                                            {% else %}
+                                                <span class="badge bg-danger status-badge fs-6" id="statusBadge">{{res.status}}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">
+                                                <a href="{{url_for('tendor')}}"><i class="fas fa-eye"></i></a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="row mt-4">
+                        <div class="col-md-4 mb-3">
+                            <div class="card border-0 bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-file-upload fa-2x text-primary mb-3"></i>
+                                    <h5>Upload Documents</h5>
+                                    <p class="text-muted">Upload tender specifications and requirements</p>
+                                    <button class="btn btn-outline-primary" type="file">Upload Now</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card border-0 bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-users fa-2x text-success mb-3"></i>
+                                    <h5>Manage Vendors</h5>
+                                    <p class="text-muted">Add or update vendor information</p>
+                                    <a href="{{url_for('vendor')}}" class="btn btn-outline-success">Manage Vendor</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card border-0 bg-light">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-chart-pie fa-2x text-info mb-3"></i>
+                                    <h5>View Reports</h5>
+                                    <p class="text-muted">Generate detailed tender reports</p>
+                                    <a href="{{url_for('report_tender')}}" class="btn btn-outline-info">View Reports</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{url_for('static',filename='files/js/jquery.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        $('.alert').hide(3000)
+    })
+</script>
+</html>

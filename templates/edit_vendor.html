@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Vendor - Tender Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .vendor-form-card {
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: none;
+        }
+        .form-header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            padding: 2rem;
+        }
+        .form-section {
+            border-left: 4px solid #1e3a8a;
+            border-radius: 8px;
+            background: #f8f9fa;
+            margin-bottom: 1.5rem;
+        }
+        .form-actions {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            position: sticky;
+            bottom: 20px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .rating-stars {
+            color: #ffc107;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .document-item {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: white;
+        }
+        .service-tag {
+            background: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="bg-light">
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Vendor - Basic Information</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .vendor-form-card {
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: none;
+        }
+        .form-header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            border-radius: 10px 10px 0 0;
+            padding: 1.5rem;
+        }
+        .form-section {
+            border-left: 4px solid #1e3a8a;
+            border-radius: 8px;
+            background: #f8f9fa;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <form id="vendorEditForm" method="post" autocomplete="off">
+                    <div class="card vendor-form-card">
+                        <!-- Header -->
+                        <div class="card-header form-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4 class="mb-1">
+                                        <i class="fas fa-edit me-2"></i>Edit Vendor
+                                    </h4>
+                                    <p class="mb-0 opacity-90">Update basic vendor information</p>
+                                </div>
+                                <span class="badge bg-light text-primary fs-6" id="vendorIdBadge" >{{person_detail.vendor_id}}</span>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-4">
+                            <!-- Basic Information Section -->
+                            <div class="form-section p-4 mb-4">
+                                <h5 class="text-primary mb-3">
+                                    <i class="fas fa-info-circle me-2"></i>Basic Information
+                                </h5>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Company Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="companyName" name="company_name" value="{{person_detail['company_name']}}" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Contact Person <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="contactPerson" name="contact_person"  value="{{person_detail['contact_person']}}" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Email Address <span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" id="email" name="email" required value="{{person_detail['email']}}">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Phone Number <span class="text-danger">*</span></label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" required value="{{person_detail['phone']}}">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Category <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="category" name="category" required value="{{person_detail['category']}}">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Status <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="status" name="status" required value="{{person_detail['status']}}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Address Information -->
+                            <div class="form-section p-4">
+                                <h5 class="text-primary mb-3">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Address Information
+                                </h5>
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label fw-bold">Street Address</label>
+                                        <input type="text" class="form-control" id="street" name="address.street" value="{{person_detail.address['street']}}">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">City</label>
+                                        <input type="text" class="form-control" id="city" name="address.city" value="{{person_detail.address['street']}}">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">State</label>
+                                        <input type="text" class="form-control" id="state" name="address.state" value="{{person_detail.address['state']}}">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">ZIP Code</label>
+                                        <input type="text" class="form-control" id="zipCode" name="address.zip_code" value="{{person_detail.address['zip_code']}}">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Country</label>
+                                        <input type="text" class="form-control" id="country" name="address.country" value="{{person_detail.address['country']}}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Form Actions -->
+                            <div class="d-flex justify-content-between mt-4">
+                                <button onclick="goBack()" class="btn btn-outline-primary">
+                                    <i class="fas fa-arrow-left me-2"></i>Back to Previous
+                                </button>
+                                <div>
+                                    <button type="reset" class="btn btn-outline-danger me-2" onclick="resetForm()">
+                                        <i class="fas fa-undo me-1"></i>Reset
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save me-1"></i>Update Vendor
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+   
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{url_for('static',filename='files/js/jquery.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        $('.alert').hide(1000)
+    })
+    function goBack() {
+            // You can use either method:
+            
+            // Method 1: Go back in browser history
+            window.history.back();
+            
+            // Method 2: Redirect to a specific page
+            // window.location.href = '/tenders'; // Change to your desired URL
+            
+            // Method 3: Show confirmation
+            // if (confirm('Are you sure you want to go back?')) {
+            //     window.history.back();
+            // }
+        }
+</script>
+</html>

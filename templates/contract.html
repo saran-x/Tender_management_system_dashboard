@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Rules & Regulations</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .contract-card {
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            border: none;
+        }
+        .contract-header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            border-radius: 10px 10px 0 0;
+            padding: 2rem;
+        }
+        .regulation-item {
+            border-left: 4px solid #1e3a8a;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            color: #1e3a8a;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .clause-number {
+            background: #1e3a8a;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <!-- Back Button -->
+                <div class="mb-4">
+                    <button onclick="goBack()" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Previous Page
+                    </button>
+                </div>
+
+                <!-- Contract Rules Card -->
+                <div class="card contract-card">
+                    <!-- Header -->
+                    <div class="card-header contract-header text-center">
+                        <h1 class="h3 mb-2">
+                            <i class="fas fa-file-contract me-2"></i>Contract Rules & Regulations
+                        </h1>
+                        <p class="mb-0 opacity-90">Standard Terms and Conditions for Tender Contracts</p>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <!-- Introduction -->
+                        <div class="alert alert-info mb-4">
+                            <h5 class="alert-heading">
+                                <i class="fas fa-info-circle me-2"></i>Important Notice
+                            </h5>
+                            <p class="mb-0">This document outlines the standard rules and regulations governing all tender contracts. Please read carefully before proceeding with any contractual agreements.</p>
+                        </div>
+
+                        <!-- General Terms Section -->
+                        <div class="mb-5">
+                            <h3 class="section-title">
+                                <i class="fas fa-gavel me-2"></i>General Terms & Conditions
+                            </h3>
+                            
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">1</span>
+                                    <h5 class="mb-1">Contract Validity</h5>
+                                </div>
+                                <p class="mb-0">All contracts shall remain valid for the duration specified in the tender document. Extensions may be granted upon mutual agreement.</p>
+                            </div>
+
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">2</span>
+                                    <h5 class="mb-1">Payment Terms</h5>
+                                </div>
+                                <p class="mb-0">Payments shall be made according to the schedule outlined in the contract. Late payments may incur penalties as specified.</p>
+                            </div>
+
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">3</span>
+                                    <h5 class="mb-1">Delivery Timeline</h5>
+                                </div>
+                                <p class="mb-0">Vendors must adhere to the delivery timeline specified in the contract. Delays must be communicated in writing with valid reasons.</p>
+                            </div>
+                        </div>
+
+                        <!-- Vendor Obligations Section -->
+                        <div class="mb-5">
+                            <h3 class="section-title">
+                                <i class="fas fa-user-tie me-2"></i>Vendor Obligations
+                            </h3>
+                            
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">4</span>
+                                    <h5 class="mb-1">Quality Standards</h5>
+                                </div>
+                                <p class="mb-0">All deliverables must meet the quality standards specified in the tender document. Substandard work will be rejected.</p>
+                            </div>
+
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">5</span>
+                                    <h5 class="mb-1">Documentation</h5>
+                                </div>
+                                <p class="mb-0">Vendors must maintain proper documentation for all transactions and deliverables as per regulatory requirements.</p>
+                            </div>
+
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">6</span>
+                                    <h5 class="mb-1">Compliance</h5>
+                                </div>
+                                <p class="mb-0">Vendors must comply with all applicable laws, regulations, and industry standards throughout the contract period.</p>
+                            </div>
+                        </div>
+
+                        <!-- Client Rights Section -->
+                        <div class="mb-5">
+                            <h3 class="section-title">
+                                <i class="fas fa-building me-2"></i>Client Rights & Responsibilities
+                            </h3>
+                            
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">7</span>
+                                    <h5 class="mb-1">Inspection Rights</h5>
+                                </div>
+                                <p class="mb-0">The client reserves the right to inspect work progress and quality at any stage of the project.</p>
+                            </div>
+
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">8</span>
+                                    <h5 class="mb-1">Termination Rights</h5>
+                                </div>
+                                <p class="mb-0">The client may terminate the contract for valid reasons including consistent underperformance or breach of terms.</p>
+                            </div>
+
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">9</span>
+                                    <h5 class="mb-1">Modification Rights</h5>
+                                </div>
+                                <p class="mb-0">The client may request reasonable modifications to the scope of work, subject to mutual agreement and price adjustment.</p>
+                            </div>
+                        </div>
+
+                        <!-- Financial Terms Section -->
+                        <div class="mb-5">
+                            <h3 class="section-title">
+                                <i class="fas fa-money-bill-wave me-2"></i>Financial Terms
+                            </h3>
+                            
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">10</span>
+                                    <h5 class="mb-1">Bid Bond</h5>
+                                </div>
+                                <p class="mb-0">A bid bond may be required as security for serious bid submission. This amount is refundable upon contract completion.</p>
+                            </div>
+
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">11</span>
+                                    <h5 class="mb-1">Performance Bond</h5>
+                                </div>
+                                <p class="mb-0">A performance bond may be required to ensure contract fulfillment. This is typically 5-10% of the contract value.</p>
+                            </div>
+
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">12</span>
+                                    <h5 class="mb-1">Payment Schedule</h5>
+                                </div>
+                                <p class="mb-0">Payments will be released according to the agreed schedule upon satisfactory completion of milestones.</p>
+                            </div>
+                        </div>
+
+                        <!-- Legal Section -->
+                        <div class="mb-4">
+                            <h3 class="section-title">
+                                <i class="fas fa-balance-scale me-2"></i>Legal Provisions
+                            </h3>
+                            
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">13</span>
+                                    <h5 class="mb-1">Dispute Resolution</h5>
+                                </div>
+                                <p class="mb-0">All disputes shall be resolved through arbitration before pursuing legal action. The arbitration venue shall be mutually agreed upon.</p>
+                            </div>
+
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">14</span>
+                                    <h5 class="mb-1">Governing Law</h5>
+                                </div>
+                                <p class="mb-0">This contract shall be governed by and construed in accordance with the laws of the jurisdiction where the client is based.</p>
+                            </div>
+
+                            <div class="regulation-item">
+                                <div class="d-flex align-items-start mb-2">
+                                    <span class="clause-number">15</span>
+                                    <h5 class="mb-1">Confidentiality</h5>
+                                </div>
+                                <p class="mb-0">Both parties agree to maintain confidentiality of all proprietary information shared during the contract period.</p>
+                            </div>
+                        </div>
+
+                        <!-- Acceptance Section -->
+                        <div class="alert alert-warning mt-4">
+                            <h5 class="alert-heading">
+                                <i class="fas fa-exclamation-triangle me-2"></i>Acceptance of Terms
+                            </h5>
+                            <p class="mb-0">By proceeding with the tender process, vendors acknowledge that they have read, understood, and agree to be bound by these rules and regulations.</p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex justify-content-between mt-4 pt-3 border-top">
+                            <button onclick="goBack()" class="btn btn-outline-primary">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Previous
+                            </button>
+                            <div>
+                                <button onclick="printPage()" class="btn btn-outline-secondary me-2">
+                                    <i class="fas fa-print me-2"></i>Print
+                                </button>
+                                <button onclick="downloadPDF()" class="btn btn-outline-success">
+                                    <i class="fas fa-download me-2"></i>Download PDF
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Last Updated -->
+                <div class="text-center mt-3">
+                    <small class="text-muted">
+                        <i class="fas fa-clock me-1"></i>Last updated: January 2024 | Version 2.1
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function goBack() {
+            // You can use either method:
+            
+            // Method 1: Go back in browser history
+            window.history.back();
+            
+            // Method 2: Redirect to a specific page
+            // window.location.href = '/tenders'; // Change to your desired URL
+            
+            // Method 3: Show confirmation
+            // if (confirm('Are you sure you want to go back?')) {
+            //     window.history.back();
+            // }
+        }
+
+        function printPage() {
+            window.print();
+        }
+
+        function downloadPDF() {
+            alert('PDF download functionality would be implemented here.');
+            // In a real application, this would generate and download a PDF
+            // window.open('/generate-contract-pdf', '_blank');
+        }
+
+        // Optional: Add smooth scrolling to sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(title => {
+                title.style.cursor = 'pointer';
+                title.addEventListener('click', function() {
+                    this.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
